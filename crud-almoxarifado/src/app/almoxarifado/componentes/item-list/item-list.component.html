@@ -1,0 +1,45 @@
+<div class="container" id="item-list">
+    <div class="row mt-2">
+        <h2>Itens</h2>
+    </div>
+    <div class="m-2">
+        <table mat-table [dataSource]="itens">
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef>Código</mat-header-cell>
+                <mat-cell *matCellDef="let itens">{{ itens.id }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="nome">
+                <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+                <mat-cell *matCellDef="let itens">{{ itens.nome }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="quantidade">
+                <mat-header-cell *matHeaderCellDef>Quantidade</mat-header-cell>
+                <mat-cell *matCellDef="let itens">{{ itens.quantidade }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="acoes">
+                <mat-header-cell *matHeaderCellDef class="action-column">
+                    <button mat-mini-fab color="primary" aria-label="Adicionar um item" (click)="onAdd()" ngbTooltip="Novo item"
+                        class="action-column-header ml-5">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </mat-header-cell>
+
+                <mat-cell *matCellDef="let course" class="action-column">
+                    <button mat-icon-button color="primary" aria-label="Editar item" (click)="onEdit(course)" ngbTooltip="Editar item">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+
+                    <button mat-icon-button color="warn" aria-label="Remover item" (click)="onDelete(course)" ngbTooltip="Excluir item">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </table>
+    </div>
+</div>
